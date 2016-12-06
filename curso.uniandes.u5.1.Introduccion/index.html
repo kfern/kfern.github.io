@@ -3,8 +3,14 @@
         <title>Proyecto en Unity para el curso "Desarrollo de Videojuegos en Unity: Una Introducción". Universidad de los Andes. Coursera. Nov-Dic.2016.</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../vendor/uikit/css/uikit.gradient.min.css">
         
+        <script src="../vendor/jquery/jquery-1.12.4.min.js" type="text/javascript"></script>
+        
+        <link rel="stylesheet" href="../vendor/uikit/css/uikit.gradient.min.css">
+        <script src="../vendor/uikit/js/uikit.min.js" type="text/javascript"></script>
+        
+        <script src="../vendor/uikit/js/components/accordion.js" type="text/javascript"></script>
+        <link href="../vendor/uikit/css/components/accordion.gradient.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
@@ -15,22 +21,59 @@
             
             <h1>Proyecto en Unity para el curso "Desarrollo de Videojuegos en Unity: Una Introducción". Universidad de los Andes. Coursera. Nov-Dic.2016.</h1>
             
-            <h2>Actividad 1: Escena inicial.</h2>
-            <h3>El resultado en principio será algo así:</h3>
-            <img class="uk-animation-slide-left" src="actividad_1/imagenes/boceto_escena_juego.png" alt="Boceto del escenario del juego"/>
-            <h3>Información general sobre el juego y los recursos a utilizar:</h3>
-            <p>El juego se desarrollará en un espacio en el que el jugador se puede mover hacia el Norte, Este, Sur y Oeste.</p>
-            <p>El jugador podrá explorar el entorno e interactuar con ciertos elementos para obtener información, recogerlos o destruirlos.</p>
-            <p>Para no ponerlo fácil habrá un enemigo incordiando :-)</p>
-            <p>Para la escena inicial se utilizarán los siguientes recursos:</p>
-            <ul>
-                <li><p><a href="http://www.lostgarden.com/2009/03/dancs-miraculously-flexible-game.html" target="_blank">Lost Garden: Danc's Miraculously Flexible Game Prototyping Graphics for Small Worlds</a></p></li>
-                <li><p><a href="http://opengameart.org/content/lpc-full-plate-golden-armor">[LPC] full plate golden armor</a></p></li>
-                <li><p><a href="https://www.assetstore.unity3d.com/en/#%21/content/17020">Orc Warrior Cartoon Character</a> </p></li>
-            </ul>
+            <div class="uk-accordion" data-uk-accordion="{showfirst:false}">
+                <div>
+                    <h2 class="uk-accordion-title">Actividad 1: Escena inicial</h2>
+                    <div class="uk-accordion-content">
+                        <h3>Una primera idea puede ser algo así:</h3>
+                        <img class="uk-animation-slide-left" src="actividad_1/imagenes/boceto_escena_juego.png" alt="Boceto del escenario del juego"/>
+                        <h3>Información general sobre el juego y los recursos a utilizar:</h3>
+                        <p>El juego se desarrollará en un espacio en el que el jugador se puede mover hacia el Norte, Este, Sur y Oeste.</p>
+                        <p>El jugador podrá explorar el entorno e interactuar con ciertos elementos para obtener información, recogerlos o destruirlos.</p>
+                        <p>Para no ponerlo fácil habrá un enemigo incordiando :-)</p>
+                        <p>Para la escena inicial se utilizarán los siguientes recursos:</p>
+                        <ul>
+                            <li><p><a href="http://www.lostgarden.com/2009/03/dancs-miraculously-flexible-game.html" target="_blank">Lost Garden: Danc's Miraculously Flexible Game Prototyping Graphics for Small Worlds</a></p></li>
+                            <li><p><a href="http://opengameart.org/content/lpc-full-plate-golden-armor">[LPC] full plate golden armor</a></p></li>
+                            <li><p><a href="https://www.assetstore.unity3d.com/en/#%21/content/17020">Orc Warrior Cartoon Character</a> </p></li>
+                        </ul>
+                        <!--
+                        <h3>Información relacionada:</h3>
+                        <ul>
+                            <li><a href="" target="_BLANK">Enlace</a></li>
+                        </ul>
+                        -->
+                        <h3>Pendiente:</h3>
+                        <p>Dividir los items de Small Worlds en diferentes atlas para identificar los items individuales más facilmente.</p>
+                    </div>
+                </div>
+            
+                <div>
+                    <h2 class="uk-accordion-title">Fisica y movimiento 2D</h2>
+                    <div class="uk-accordion-content">
+                        <h3>Uso de Rigidbody y Colliders.</h3>
+                        <p>Todos los elementos con los que se interactúe necesitan tener ambos. En el caso de los elementos estáticos (piedras, árboles, casas, etc) sólo es necesario añadirles un collider ya que Unity internamente les asigna un Rigidbody de tipo Static. En los elementos dinámicos (personajes, vehículos, objetos arrojadizos, etc) el Rigidbody ha de ser del tipo Dynamic.</p>
+                        <h3>Información relacionada:</h3>
+                        <ul>
+                            <li><a href="https://docs.unity3d.com/Manual/class-Rigidbody2D.html" target="_BLANK">Unity - Manual: Rigidbody 2D</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+<!--
+            <div>
+                <h2 class="uk-accordion-title"></h2>
+                <div class="uk-accordion-content"  aria-expanded="false">
+                    <h3></h3>
+                    <p></p>
+                    <h3>Información relacionada:</h3>
+                    <ul>
+                        <li><a href="" target="_BLANK">Enlace</a></li>
+                    </ul>
+                </div>
+            </div>
 
-            <h3>Pendiente:</h3>
-            <p>Dividir los items de Small Worlds en diferentes atlas para identificar los items individuales más facilmente.</p>
+-->
         </div> 
     </body>
 </html>
