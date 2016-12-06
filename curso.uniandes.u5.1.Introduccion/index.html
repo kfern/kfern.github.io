@@ -37,12 +37,6 @@
                             <li><p><a href="http://opengameart.org/content/lpc-full-plate-golden-armor">[LPC] full plate golden armor</a></p></li>
                             <li><p><a href="https://www.assetstore.unity3d.com/en/#%21/content/17020">Orc Warrior Cartoon Character</a> </p></li>
                         </ul>
-                        <!--
-                        <h3>Información relacionada:</h3>
-                        <ul>
-                            <li><a href="" target="_BLANK">Enlace</a></li>
-                        </ul>
-                        -->
                         <h3>Pendiente:</h3>
                         <p>Dividir los items de Small Worlds en diferentes atlas para identificar los items individuales más facilmente.</p>
                     </div>
@@ -53,41 +47,53 @@
                     <div class="uk-accordion-content">
                         <h3>Uso de Rigidbody y Colliders.</h3>
                         <p>Todos los elementos con los que se interactúe necesitan tener ambos. En el caso de los elementos estáticos (piedras, árboles, casas, etc) sólo es necesario añadirles un collider ya que Unity internamente les asigna un Rigidbody de tipo Static. En los elementos dinámicos (personajes, vehículos, objetos arrojadizos, etc) el Rigidbody ha de ser del tipo Dynamic.</p>
-                        <div>
-                            <p>Como se puede mover el jugador por los 4 puntos cardinales en un espacio 2D no podrá existir gravedad ya que el personaje siempre está apoyado en el suelo. Para poder usar físicas y que el personaje no se caiga hay que asignar "Gravity Scale" a 0 ó seleccionar "IsKinematic". Si se selecciona "IsKinematic" hay que implementar el control de colisiones a través de un script.</p>
-                            <img src="fisica_movimiento_2d/imagenes/configuracion_personaje_a.png" alt=""/>
+                        <div class="uk-grid">
+                            <div class="uk-width-7-10">
+                                <p>Como se puede mover el jugador por los 4 puntos cardinales en un espacio 2D no podrá existir gravedad ya que el personaje siempre está apoyado en el suelo. Para poder usar físicas y que el personaje no se caiga hay que asignar "Gravity Scale" a 0 ó seleccionar "IsKinematic". Si se selecciona "IsKinematic" hay que implementar el control de colisiones a través de un script.</p>
+                                <p>Con "Lineal Drag" aplicaremos resistencia al movimiento, por lo que los avances y cambios de velocidad serán suaves, dependiendo del tiempo que se estén pulsando los controles de movimiento.</p>
+                                <p>En "Constraints -> Freeze Rotation" seleccionamos "Z" para que el objeto no se gire.</p>
+                            </div>
+                            <div class="uk-width-3-10">
+                                <img src="fisica_movimiento_2d/imagenes/rb2d_configuracion_personaje_a.png" alt=""/>
+                                
+                            </div>
                         </div>
-                        <div>
-                            <p>Los objetos estáticos pueden tener un collider cuadrado o circular.</p>
-                            <img src="fisica_movimiento_2d/imagenes/configuracion_objeto_estatico.png" alt=""/>
+                        <div class="uk-grid">
+                            <div class="uk-width-3-10">
+                                <img src="fisica_movimiento_2d/imagenes/circular_collider_configuracion_objeto_estatico.png" alt=""/>
+                            </div>
+                            <div class="uk-width-7-10">
+                                <p>Los objetos estáticos pueden tener un collider cuadrado o circular, ya que al tener el personaje bloqueada la rotación en el eje Z no se girará cuando entren en contacto los distintos colliders.</p>
+                            </div>
                         </div>
-                        <div>
-                            <p>El movimiento del personaje se genera mediante un script aplicando fuerzas sobre el objeto:</p>
-                            <code><pre>
-                                using UnityEngine;
-                                using System.Collections;
+                        <div class="uk-grid">
+                            <div class="uk-width-10-10">
+                                <p>El movimiento del personaje se genera mediante un script aplicando fuerzas sobre el objeto</p>
+                            </div>
+                            <div class="uk-width-10-10">
+                                <pre><code>
+                                    using UnityEngine;
+                                    using System.Collections;
 
-                                public class Controlador_Personaje_A : MonoBehaviour {
-                                        public float Velocidad = 0.5f;
-                                        private Rigidbody2D rb;
+                                    public class Controlador_Personaje_A : MonoBehaviour {
+                                            public float Velocidad = 0.5f;
+                                            private Rigidbody2D rb;
 
-                                        // Use this for initialization
-                                        void Start () {
-                                                rb = GetComponent&lt;Rigidbody2D&gt; ();
-                                        }
+                                            // Use this for initialization
+                                            void Start () {
+                                                    rb = GetComponent&lt;Rigidbody2D&gt; ();
+                                            }
 
-                                        void FixedUpdate () {
-                                                Vector2 m = new Vector2 (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                                                rb.AddForce (m * Velocidad);
-                                        }
-                                }
-                            </pre></code>
-                        </div>
+                                            void FixedUpdate () {
+                                                    Vector2 m = new Vector2 (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                                                    rb.AddForce (m * Velocidad);
+                                            }
+                                    }
+                                </code></pre>
+                            </div>
+                        </div>                        
+
                         <p>El jugador podrá caminar por la tierra, entrar en el agua en la zona poco profunda o avanzar a la zona profunda. En este último caso durante ese tiempo debería estar perdiendo vida o su equivalente.</p>
-                        <div>
-                            
-                            
-                        </div>
                         <h3>Información relacionada:</h3>
                         <ul>
                             <li><a href="https://docs.unity3d.com/Manual/class-Rigidbody2D.html" target="_BLANK">Unity - Manual: Rigidbody 2D</a></li>
