@@ -71,29 +71,48 @@
                                 <p>El movimiento del personaje se genera mediante un script aplicando fuerzas sobre el objeto</p>
                             </div>
                             <div class="uk-width-10-10">
-                                <pre><code>
-                                    using UnityEngine;
-                                    using System.Collections;
+<pre><code>
+    using UnityEngine;
+    using System.Collections;
 
-                                    public class Controlador_Personaje_A : MonoBehaviour {
-                                            public float Velocidad = 0.5f;
-                                            private Rigidbody2D rb;
+    public class Controlador_Personaje_A : MonoBehaviour {
+            public float Velocidad = 0.5f;
+            private Rigidbody2D rb;
 
-                                            // Use this for initialization
-                                            void Start () {
-                                                    rb = GetComponent&lt;Rigidbody2D&gt; ();
-                                            }
+            // Use this for initialization
+            void Start () {
+                    rb = GetComponent&lt;Rigidbody2D&gt; ();
+            }
 
-                                            void FixedUpdate () {
-                                                    Vector2 m = new Vector2 (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                                                    rb.AddForce (m * Velocidad);
-                                            }
-                                    }
-                                </code></pre>
+            void FixedUpdate () {
+                    Vector2 m = new Vector2 (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                    rb.AddForce (m * Velocidad);
+            }
+    }
+</code></pre>
                             </div>
                         </div>                        
 
                         <p>El jugador podrá caminar por la tierra, entrar en el agua en la zona poco profunda o avanzar a la zona profunda. En este último caso durante ese tiempo debería estar perdiendo vida o su equivalente.</p>
+                        <p>Para ello he asignado un "Poligon Collider 2D" al terreno y creado el script Controlador_Terreno para determinar cuando "algo" se ha salido del terreno y está en el mar.</p>
+<pre><code>
+using UnityEngine;
+using System.Collections;
+
+public class Controlador_Terreno : MonoBehaviour {
+
+	void OnTriggerExit2D(Collider2D collider)
+	{
+		Debug.Log("Algo se ha salido del terreno. Si es el personaje está en el mar y debería perder vida o su equivalente."); 
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		Debug.Log ("Algo ha entrado. Al iniciar el juego se lanza el evento PARA CADA ELEMENTO QUE COLISIONE CON EL TERRENO!!. Si estaba perdiendo vida ha de dejar de perderla."); 
+	}
+}
+</code></pre>
+                        
                         <h3>Información relacionada:</h3>
                         <ul>
                             <li><a href="https://docs.unity3d.com/Manual/class-Rigidbody2D.html" target="_BLANK">Unity - Manual: Rigidbody 2D</a></li>
